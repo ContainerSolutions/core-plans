@@ -26,7 +26,7 @@ pkg_license=("Apache-2.0")
 pkg_source=
 pkg_deps=(
   core/cassandra # this is the important part as it will include cassandra and
-				 # you don't have to build it again
+                 # you don't have to build it again
 )
 
 do_build() {
@@ -58,7 +58,7 @@ export CASSANDRA_CONF="{{pkg.svc_config_path}}"
 
 # retrieve legacy cassandra and start it with our custom config
 exec {{pkgPathFor "core/cassandra"}}/bin/cassandra -f \
-	-Dcassandra.logdir="{{pkg.svc_var_path}}/logs"
+  -Dcassandra.logdir="{{pkg.svc_var_path}}/logs"
 ```
 
 You can copy the whole `config` directory from the legacy package and add your
@@ -96,8 +96,8 @@ Modify the `default.toml` file to link to your new class:
 
 ```toml
 [[seed_provider]]
-	 class_name = "org.myorganisation.mypath.MySeedProvider"
-	[seed_provider.parameters]
+  class_name = "org.myorganisation.mypath.MySeedProvider"
+  [seed_provider.parameters]
     seeds = "127.0.0.1"
 ```
 
@@ -117,6 +117,7 @@ First, you need to activate the following options in your `config.toml` file
 ```toml
 [native_transport]
 port_ssl = 9142
+
 [encryption.client]
 enabled = true
 optional = true # you can force SSL by setting this to false
